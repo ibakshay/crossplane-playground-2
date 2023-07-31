@@ -1,0 +1,8 @@
+apiVersion: car.myplayground.crossplane.io/v1alpha1
+kind: Bmw
+metadata:
+  name: example-2
+spec:
+  forProvider:
+    configurableField: test
+    modelName: "3 Series"

@@ -19,6 +19,7 @@ package bmw
 import (
 	"context"
 	"fmt"
+	xpv1 "github.com/crossplane/crossplane-runtime/apis/common/v1"
 	"github.com/crossplane/provider-myplayground/internal/features"
 
 	"github.com/pkg/errors"
@@ -139,6 +140,8 @@ func (c *external) Observe(ctx context.Context, mg resource.Managed) (managed.Ex
 
 	// These fmt statements should be removed in the real implementation.
 	fmt.Printf("Observing: %+v", cr)
+	cr.Status.AtProvider.ModelName = cr.Spec.ForProvider.ModelName
+	cr.Status.SetConditions(xpv1.Available())
 
 	return managed.ExternalObservation{
 		// Return false when the external resource does not exist. This lets
@@ -163,7 +166,8 @@ func (c *external) Create(ctx context.Context, mg resource.Managed) (managed.Ext
 		return managed.ExternalCreation{}, errors.New(errNotBmw)
 	}
 
-	fmt.Printf("Creating: %+v", cr)
+	fmt.Printf("Creating the car model! %+v", cr.Spec.ForProvider.ModelName)
+	cr.Status.SetConditions(xpv1.Available())
 
 	return managed.ExternalCreation{
 		// Optionally return any details that may be required to connect to the

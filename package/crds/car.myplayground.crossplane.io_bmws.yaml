@@ -70,8 +70,11 @@ spec:
                 properties:
                   configurableField:
                     type: string
+                  modelName:
+                    type: string
                 required:
                 - configurableField
+                - modelName
                 type: object
               managementPolicy:
                 default: FullControl
@@ -265,8 +268,12 @@ spec:
               atProvider:
                 description: BmwObservation are the observable fields of a Bmw.
                 properties:
+                  modelName:
+                    type: string
                   observableField:
                     type: string
+                required:
+                - modelName
                 type: object
               conditions:
                 description: Conditions of the resource.

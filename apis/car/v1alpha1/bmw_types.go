@@ -28,11 +28,13 @@ import (
 // BmwParameters are the configurable fields of a Bmw.
 type BmwParameters struct {
 	ConfigurableField string `json:"configurableField"`
+	ModelName         string `json:"modelName"`
 }
 
 // BmwObservation are the observable fields of a Bmw.
 type BmwObservation struct {
 	ObservableField string `json:"observableField,omitempty"`
+	ModelName       string `json:"modelName"`
 }
 
 // A BmwSpec defines the desired state of a Bmw.
