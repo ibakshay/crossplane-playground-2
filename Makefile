@@ -3,6 +3,11 @@
 PROJECT_NAME := provider-myplayground
 PROJECT_REPO := github.com/crossplane/$(PROJECT_NAME)
 
+# Override the default up CLI version due to a bug in k8s_tool.mk - https://crossplane.slack.com/archives/CEG3T90A1/p1688625094928729?thread_ts=1688387385.998349&cid=CEG3T90A1
+UP_VERSION = v0.17.0
+UP_CHANNEL = stable
+UPTEST_VERSION = v0.5.0
+
 PLATFORMS ?= linux_amd64 linux_arm64
 -include build/makelib/common.mk
 
@@ -157,7 +162,7 @@ export CROSSPLANE_MAKE_HELP
 crossplane.help:
 	@echo "$$CROSSPLANE_MAKE_HELP"
 
-# Override the default up CLI version due to a bug in k8s_tool.mk - https://crossplane.slack.com/archives/CEG3T90A1/p1688625094928729?thread_ts=1688387385.998349&cid=CEG3T90A1
+
 printVariables:
 	@echo UP=$(UP)
 
