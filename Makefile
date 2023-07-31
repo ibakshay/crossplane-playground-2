@@ -27,11 +27,6 @@ GO111MODULE = on
 
 -include build/makelib/k8s_tools.mk
 
-# Override the default up CLI version due to a bug - https://crossplane.slack.com/archives/CEG3T90A1/p1688625094928729?thread_ts=1688387385.998349&cid=CEG3T90A1
-UP_VERSION ?= v0.17.0
-UP_CHANNEL ?= stable
-UP := $(TOOLS_HOST_DIR)/up-$(UP_VERSION)
-
 # ====================================================================================
 # Setup Images
 
@@ -161,6 +156,11 @@ export CROSSPLANE_MAKE_HELP
 
 crossplane.help:
 	@echo "$$CROSSPLANE_MAKE_HELP"
+
+# Override the default up CLI version due to a bug in k8s_tool.mk - https://crossplane.slack.com/archives/CEG3T90A1/p1688625094928729?thread_ts=1688387385.998349&cid=CEG3T90A1
+printVariables:
+	@echo UP=$(UP)
+
 
 help-special: crossplane.help
 
