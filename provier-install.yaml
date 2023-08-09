@@ -4,3 +4,10 @@ metadata:
   name: provider-playground
 spec:
   package: ibakshay/provider-myplayground:v0.0.0-6.g78ffbe8
+---
+apiVersion: pkg.crossplane.io/v1
+kind: Provider
+metadata:
+  name: provider-kubernetes
+spec:
+  package: "crossplane/provider-kubernetes:main"
